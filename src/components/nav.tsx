@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { useState } from "react";
 import Logo from "../../public/logo.png";
@@ -8,11 +6,16 @@ import { RiLinksFill } from "react-icons/ri";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import Link from "next/link";
 
-const Navbar = ({ setActiveComponent }) => {
+// Define the type for props
+interface NavbarProps {
+  setActiveComponent: (component: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
   const [state, setState] = useState(false);
   const [activeLink, setActiveLink] = useState("links"); // Set default active link to "links"
 
-  const handleLinkClick = (component) => {
+  const handleLinkClick = (component: string) => {
     setActiveLink(component);
     setActiveComponent(component);
     setState(false); // Close the mobile menu on link click
