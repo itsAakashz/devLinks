@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { db, auth } from '../../app/auth/firebaseConfig';
-import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import pfp from "../../../public/images/pfp-placeholder.png";
 
 interface Profile {
@@ -30,34 +30,41 @@ const ProfileCard = () => {
       }
 
       const email = auth.currentUser.email;
+      console.log("Authenticated user email:", email);
 
       if (email) {
         try {
           // Fetch profile
-          const profileDoc = doc(db, 'Profiles', email);
-          const profileSnap = await getDoc(profileDoc);
+          const profilesCollection = collection(db, 'profiles'); // Corrected collection name
+          const profileQuery = query(profilesCollection, where('email', '==', email));
+          const profileSnapshot = await getDocs(profileQuery);
 
-          if (profileSnap.exists()) {
-            const profileData = profileSnap.data() as Profile;
+          console.log("Profile query:", profileQuery);
+          console.log("Profile snapshot size:", profileSnapshot.size);
+
+          if (!profileSnapshot.empty) {
+            const profileData = profileSnapshot.docs[0].data() as Profile;
             setProfile(profileData);
-            console.log("Profile Data:", profileData); // Log profile data
+            console.log("Profile Data:", profileData);
           } else {
             console.log("No profile found for email:", email);
           }
 
           // Fetch links
-          const linksCollection = collection(db, 'Links');
-          const q = query(linksCollection, where('email', '==', email));
-          const querySnapshot = await getDocs(q);
+          const linksCollection = collection(db, 'links'); // Corrected collection name
+          const linksQuery = query(linksCollection, where('email', '==', email));
+          const linksSnapshot = await getDocs(linksQuery);
 
-          if (!querySnapshot.empty) {
-            const linksData = querySnapshot.docs.map(doc => doc.data() as Link);
+          console.log("Links query:", linksQuery);
+          console.log("Links snapshot size:", linksSnapshot.size);
+
+          if (!linksSnapshot.empty) {
+            const linksData = linksSnapshot.docs.map(doc => doc.data() as Link);
             setLinks(linksData);
-            console.log("Links Data:", linksData); // Log links data
+            console.log("Links Data:", linksData);
           } else {
             console.log("No links found for email:", email);
           }
-
         } catch (error) {
           console.error("Error fetching profile and links:", error);
         } finally {
