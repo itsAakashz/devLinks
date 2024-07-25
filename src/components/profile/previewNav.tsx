@@ -1,11 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 
-const previewNav = () => {
+const PreviewNav = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    Modal.setAppElement('body'); // Set the app element to the body
+  }, []);
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -19,7 +23,7 @@ const previewNav = () => {
       console.error('Error copying to clipboard:', error);
     });
   };
-
+  
   return (
     <section className="w-auto h-[120px] border-[30px] border-[#633CFF] relative z-0">
       <nav className="flex rounded-[12px] h-[78px] w-[1450px] mx-auto pt-[16px] pr-[16px] pb-[16px] pl-[24px]">
@@ -37,7 +41,7 @@ const previewNav = () => {
           Share
         </button>
       </nav>
-     {/* Share model */}
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={toggleModal}
@@ -83,4 +87,4 @@ const previewNav = () => {
   );
 };
 
-export default previewNav;
+export default PreviewNav;
