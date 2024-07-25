@@ -25,8 +25,8 @@ const PreviewNav = () => {
   };
   
   return (
-    <section className="w-auto h-[120px] border-[30px] border-[#633CFF] relative z-0">
-      <nav className="flex rounded-[12px] h-[78px] w-[1450px] mx-auto pt-[16px] pr-[16px] pb-[16px] pl-[24px]">
+    <section className="w-auto lg:h-[126px] lg:border-[30px] lg:border-[#633CFF] lg:relative z-0">
+      <nav className="flex items-center justify-between rounded-[12px] h-[66px] pt-[14px] pr-[16px] pb-[16px] pl-[24px]">
         <Link
           href="/dashboard"
           className="text-[#633CFF] h-[46px] w-[159px] text-center py-[11px] px-[27px] rounded-[8px] border-[#633CFF] border-[1px]"
@@ -36,7 +36,7 @@ const PreviewNav = () => {
         
         <button
           onClick={toggleModal}
-          className="text-white h-[46px] w-[133px] text-center py-[11px] px-[27px] font-semibold rounded-[8px] bg-[#633CFF] mr-[100px] mx-[70%]"
+          className="text-white h-[46px] w-[133px] text-center py-[11px] px-[27px] font-semibold rounded-[8px] bg-[#633CFF]"
         >
           Share
         </button>

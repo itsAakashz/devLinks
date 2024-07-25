@@ -1,8 +1,8 @@
 "use client"
 import { useEffect } from 'react';
 import type { NextPage } from 'next';
-import ProfileCard from '../../components/profile/ProfileCard';
-import PreviewNav from '../../components/profile/previewNav';
+import ProfileCard from '../../components/preview/ProfileCard';
+import PreviewNav from '../../components/preview/previewNav';
 import useAuth from '../hooks/useAuth';
 
 const PreviewPage: NextPage = () => {
@@ -15,11 +15,11 @@ const PreviewPage: NextPage = () => {
   }, [authenticated, loading]);
 
   if (loading) {
-    return <div>Loading...</div>; // Optionally, render a loading indicator while checking authentication
+    return <div>Loading...</div>; 
   }
 
   if (!authenticated) {
-    return null; // Prevent rendering if the user is not authenticated and loading is complete
+    return null; 
   }
 
   return (

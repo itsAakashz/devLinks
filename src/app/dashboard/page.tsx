@@ -12,7 +12,7 @@ const DashboardPage = () => {
   const [activeComponent, setActiveComponent] = useState("links"); // Set default active component to "links"
 
   if (loading) {
-    return <div className='text-center text-[100px]'>Loading...</div>;
+    return <div className='text-center text-[50px]'>Loading...</div>;
   }
 
   if (!authenticated) {

@@ -1,8 +1,6 @@
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <main className="#">
-     hhhiiiiiii
-    </main>
-  );
+  redirect('/dashboard');
+  return null; // This component won't render anything
 }
