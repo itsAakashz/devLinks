@@ -82,9 +82,9 @@ const ProfileCard = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="w-auto flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="absolute h-[357px] lg:w-[1351px] bg-[#633CFF] mb-[340px] rounded-b-[32px] hidden lg:block"></div>
-      <div className="relative bg-white rounded-xl shadow-lg lg:p-6 lg:sm:p-8 lg:max-w-sm h-[569px] w-[349px] bg-[#FFFFFF]">
+    <div className="lg:w-auto flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="absolute h-[357px] lg:w-[1689px] bg-[#633CFF] mb-[440px] rounded-b-[32px] hidden lg:block"></div>
+      <div className="lg:relative w-[375px] bg-white rounded-xl shadow-lg p-6 lg:sm:p-8 lg:max-w-sm h-[569px] lg:w-[349px] bg-[#FFFFFF] ">
         <div className="flex flex-col items-center space-y-4">
           <Image
             src={profile?.profilePicture || pfp}
